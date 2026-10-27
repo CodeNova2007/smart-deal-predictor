@@ -22,3 +22,7 @@ data/*.sqlite*
 Thumbs.db
 .vscode/
 .idea/
+
+# Local screenshots
+cloud_check.png
+deployed_check.png
