@@ -324,7 +324,7 @@ def test_service_removes_a_live_product_and_its_records(
     assert db.get_offers(product_id) == []
     assert db.get_live_sources(product_id) == []
     assert db.get_watchlist_item(product_id) is None
-    assert len(db.list_products()) == 20
+    assert len(db.list_products()) == 40
 
 
 def test_service_refuses_to_remove_a_demo_product(

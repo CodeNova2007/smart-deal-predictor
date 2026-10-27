@@ -75,7 +75,7 @@ def test_local_deal_answer_uses_recorded_values(db: Database, settings: Settings
     assert "TechNest" in answer.text
     assert "Recorded facts" in answer.text
     assert answer.data_used["selected_product"] == "EchoBuds Pro"
-    assert answer.data_used["catalog_products"] == 20
+    assert answer.data_used["catalog_products"] == 40
     assert answer.data_used["recorded_observations"] == 120
     assert answer.data_used["seller_offers"] == 4
 

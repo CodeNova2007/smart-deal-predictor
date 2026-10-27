@@ -11,7 +11,7 @@ from smartdeal.database import Database
 
 def test_initialize_seeds_the_demo_catalog_once(db: Database):
     products = db.list_products()
-    assert len(products) == 20
+    assert len(products) == 40
     assert all(item["currency"] == "INR" for item in products)
     assert {item["name"] for item in products} >= {
         "EchoBuds Pro",
@@ -46,7 +46,7 @@ def test_initialize_seeds_the_demo_catalog_once(db: Database):
 
     # Re-running initialization must not duplicate demo rows.
     db.initialize()
-    assert len(db.list_products()) == 20
+    assert len(db.list_products()) == 40
     assert len(db.get_price_history(1)) == 120
 
 

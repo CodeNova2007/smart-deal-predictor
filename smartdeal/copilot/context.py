@@ -225,16 +225,17 @@ def find_mentioned_snapshots(
         for snapshot in snapshots
         if snapshot["id"] != exclude_id and _matches_product(query, snapshot)
     ]
-    if len(matches) > 2:
+    if matches:
         normalized = query.lower()
+        # Rank explicit product names above brand-only or keyword matches, so a
+        # named product always beats a same-brand sibling in comparisons.
         matches.sort(
             key=lambda item: (
                 0 if item["name"].lower() in normalized else 1,
                 -item["deal"]["score"],
             )
         )
-        matches = matches[:2]
-    return matches
+    return matches[:2]
 
 
 def build_shopping_context(

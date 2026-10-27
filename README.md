@@ -372,9 +372,9 @@ classification rather than appearing in the website UI.
 
 `smartdeal/seed.py` creates a deterministic synthetic catalog:
 
-- **20 products** across audio, wearables, laptops, monitors, smartphones,
-  cameras, kitchen, home, fitness, and accessories.
-- **120 daily price observations per product** (2,400 total).
+- **40 products** across audio, wearables, laptops, desktops, monitors, tablets,
+  smartphones, cameras, gaming, kitchen, home, fitness, and accessories.
+- **120 daily price observations per product** (4,800 total).
 - **4 seller offers per product** with listed prices, coupons, delivery fees, and
   stock status.
 - **4 seeded watchlist targets** in a fresh database.
@@ -477,7 +477,7 @@ PyProject/
 ├── smartdeal/
 │   ├── config.py                   # Settings and server-side secret loading
 │   ├── database.py                 # Schema, migrations, CRUD, live persistence
-│   ├── seed.py                     # Deterministic 20-product demo catalog
+│   ├── seed.py                     # Deterministic 40-product demo catalog
 │   ├── analytics.py                # Stats, deal score, forecast, offers, targets
 │   ├── live/
 │   │   ├── scraper.py              # URL checks, fetching, parsing, adapters
@@ -681,7 +681,7 @@ low-volume demonstration and respects access controls rather than evading them.
 
 ## License / provenance
 
-This is a self-contained demo project. The 20-product demo catalog, its price
+This is a self-contained demo project. The 40-product demo catalog, its price
 observations, seller names, coupons, and watchlist entries are synthetic and
 generated locally for demonstration. They are not live marketplace data and
 should not be used for real purchasing decisions.
