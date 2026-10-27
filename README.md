@@ -290,7 +290,7 @@ The empty state heading is exactly **“Your Personal Shopping Copilot”**.
   time — without pretending a stale quote is current.
 - Demo seller offers, recorded coupons, delivery fees, and effective totals.
 - Target-price suggestions and the gap to a target.
-- Navigation help for all eight sections.
+- Navigation help for all ten sections.
 - Budget questions such as “What is the best deal under ₹20,000?”
 
 ### What it will not do
@@ -492,7 +492,7 @@ PyProject/
 │   └── ui/
 │       ├── theme.py                # Premium CSS and responsive drawer layout
 │       ├── components.py           # Cards, charts, badges, live/demo panels
-│       ├── views.py                # Eight sections and live quote workspace
+│       ├── views.py                # Ten sections and live quote workspace
 │       └── copilot.py              # Floating panel, chat state, composer, JS
 └── tests/
     ├── conftest.py                 # Temporary DB and offline settings
@@ -535,7 +535,7 @@ $env:PYTHONIOENCODING = "utf-8"
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-Expected: **64 passed**, with the four Playwright tests skipped unless a browser
+Expected: **85 passed**, with the four Playwright tests skipped unless a browser
 URL is configured. The tests use temporary SQLite databases and mocked
 network/AI responses; no external network access is required.
 
@@ -545,6 +545,14 @@ Coverage includes:
 - Forecast availability, direction, uncertainty bounds, and confidence.
 - SQLite initialization, migrations, product bundles, watchlist upsert/remove,
   demo seeding, and live/demo separation.
+- Persistent alerts: target sync and dedupe, price/stock change detection,
+  quote attention and recovery, read/dismiss/clear flows.
+- Purchase records: validation, upsert/remove, comparison with the current
+  price, and portfolio summaries.
+- Shareable deep links: page slugs, product/compare query parsing, and URL
+  building.
+- Stale-only refresh: fresh products are skipped, stale products refresh, and
+  the no-live-products case is handled.
 - Live URL validation, SSRF blocking, robots handling, Amazon/Flipkart selectors,
   generic JSON-LD parsing, blocked/priceless pages, stale labels, import, failed
   refresh, multiple sources, INR rejection, source removal, and guarded removal
