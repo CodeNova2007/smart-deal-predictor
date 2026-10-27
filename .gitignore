@@ -1,0 +1,24 @@
+# Secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# App data (generated demo database)
+data/*.db
+data/*.db-*
+data/*.sqlite*
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
