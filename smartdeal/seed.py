@@ -585,10 +585,13 @@ def _build_offers(product: dict[str, Any], current: float) -> list[dict[str, Any
 
 def _insert_demo_product(
     connection: Any, product: dict[str, Any], day: date
-) -> int:
+) -> int | None:
+    # OR IGNORE plus the unique demo-name index makes seeding safe when two
+    # app sessions start concurrently. A duplicate insert returns None and
+    # writes no history or offers.
     cursor = connection.execute(
         """
-        INSERT INTO products
+        INSERT OR IGNORE INTO products
             (name, brand, category, description, emoji, current_price,
              list_price, currency, data_origin)
         VALUES (?, ?, ?, ?, ?, ?, ?, 'INR', 'demo')
@@ -603,6 +606,8 @@ def _insert_demo_product(
             product["list_price"],
         ),
     )
+    if cursor.rowcount == 0:
+        return None
     product_id = int(cursor.lastrowid)
 
     history = _generate_history(product, day)
@@ -646,9 +651,9 @@ def seed_database(connection: Any, today: date | None = None) -> None:
     product_ids: dict[str, int] = {}
 
     for product in PRODUCTS:
-        product_ids[product["name"]] = _insert_demo_product(
-            connection, product, day
-        )
+        product_id = _insert_demo_product(connection, product, day)
+        if product_id is not None:
+            product_ids[product["name"]] = product_id
 
     for name, target in WATCHLIST_SEED:
         product_id = product_ids.get(name)
@@ -683,7 +688,7 @@ def seed_missing_demo_products(
     for product in PRODUCTS:
         if product["name"] in existing:
             continue
-        _insert_demo_product(connection, product, day)
-        added += 1
+        if _insert_demo_product(connection, product, day) is not None:
+            added += 1
     connection.commit()
     return added

@@ -189,6 +189,26 @@ class Database:
             "CREATE INDEX IF NOT EXISTS idx_offers_source "
             "ON offers(product_id, source_url)"
         )
+        # Demo catalog names must be unique. Two app sessions starting at the
+        # same time can both try to seed the same new products; the unique
+        # index makes the loser's insert a no-op. Clean up any duplicates left
+        # by older versions first, keeping the oldest row (children cascade).
+        connection.execute(
+            """
+            DELETE FROM products
+            WHERE data_origin = 'demo'
+              AND id NOT IN (
+                  SELECT MIN(id)
+                  FROM products
+                  WHERE data_origin = 'demo'
+                  GROUP BY name
+              )
+            """
+        )
+        connection.execute(
+            "CREATE UNIQUE INDEX IF NOT EXISTS idx_products_demo_name "
+            "ON products(name) WHERE data_origin = 'demo'"
+        )
 
     @staticmethod
     def _ensure_columns(

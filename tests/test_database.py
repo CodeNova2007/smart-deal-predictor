@@ -7,6 +7,7 @@ from datetime import date
 import pytest
 
 from smartdeal.database import Database
+from smartdeal.seed import PRODUCTS, _insert_demo_product, seed_missing_demo_products
 
 
 def test_initialize_seeds_the_demo_catalog_once(db: Database):
@@ -102,3 +103,51 @@ def test_add_price_observation_updates_current_price_and_history(db: Database):
 
 def test_get_bundle_returns_none_for_unknown_product(db: Database):
     assert db.get_bundle(999_999) is None
+
+
+def test_seed_missing_demo_products_is_idempotent(db: Database):
+    with db.connect() as connection:
+        assert seed_missing_demo_products(connection) == 0
+    assert len(db.list_products()) == 40
+
+
+def test_insert_demo_product_ignores_a_duplicate_name(db: Database):
+    with db.connect() as connection:
+        assert _insert_demo_product(connection, PRODUCTS[0], date.today()) is None
+        connection.commit()
+    assert len(db.list_products()) == 40
+
+
+def test_initialize_removes_duplicate_demo_rows_and_keeps_names_unique(db: Database):
+    with db.connect() as connection:
+        # Simulate a database created before the unique demo-name index.
+        connection.execute("DROP INDEX IF EXISTS idx_products_demo_name")
+        source = connection.execute(
+            "SELECT * FROM products WHERE data_origin = 'demo' LIMIT 1"
+        ).fetchone()
+        connection.execute(
+            """
+            INSERT INTO products
+                (name, brand, category, description, emoji, current_price,
+                 list_price, currency, data_origin)
+            VALUES (?, ?, ?, ?, ?, ?, ?, 'INR', 'demo')
+            """,
+            (
+                source["name"],
+                source["brand"],
+                source["category"],
+                source["description"],
+                source["emoji"],
+                source["current_price"],
+                source["list_price"],
+            ),
+        )
+        connection.commit()
+
+    assert len(db.list_products()) == 41
+
+    db.initialize()
+
+    products = db.list_products()
+    assert len(products) == 40
+    assert len({product["name"] for product in products}) == 40
