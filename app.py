@@ -12,6 +12,7 @@ from smartdeal.alerts import sync_target_alerts
 from smartdeal.analytics import build_all_snapshots
 from smartdeal.config import get_settings
 from smartdeal.database import Database
+from smartdeal.live.seed import seed_recorded_live_quotes
 from smartdeal.ui.copilot import render_copilot
 from smartdeal.ui.deep_links import apply_deep_link, sync_deep_link
 from smartdeal.ui.theme import inject_theme
@@ -72,6 +73,15 @@ def main() -> None:
             "write to its data folder and restart."
         )
         st.stop()
+
+    # Community Cloud resets local files on restart. Re-attach the verified
+    # recorded quotes so the live workspace is never empty; existing imports
+    # and user removals are left alone.
+    if settings.seed_live_demo:
+        try:
+            seed_recorded_live_quotes(db)
+        except Exception:
+            pass
 
     try:
         snapshots = build_all_snapshots(db, stale_hours=settings.live_stale_hours)

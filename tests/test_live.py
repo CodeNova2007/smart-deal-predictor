@@ -10,6 +10,7 @@ from smartdeal.analytics import build_product_snapshot
 from smartdeal.config import Settings
 from smartdeal.database import Database
 from smartdeal.live import LiveQuote, LiveService, ScrapeError
+from smartdeal.live.seed import RECORDED_QUOTES, seed_recorded_live_quotes
 from smartdeal.live.scraper import (
     is_product_page_url,
     parse_product_page,
@@ -221,6 +222,106 @@ def test_service_keeps_last_quote_on_refresh_failure(
     assert source["last_status"] == "blocked"
     assert source["last_price"] == 1_999.0
     assert source["last_success_at"]
+
+
+def test_service_refreshes_a_live_product_with_no_sources(
+    db: Database, settings: Settings, monkeypatch: pytest.MonkeyPatch
+):
+    service = LiveService(db, settings)
+    url = "https://www.amazon.in/dp/B0TEST1234"
+    monkeypatch.setattr(service, "_scrape", lambda target: _quote(url))
+    product_id = int(service.import_product(url)["product_id"])
+
+    # Simulate the user detaching every source URL from the live product.
+    for source in db.get_live_sources(product_id):
+        assert db.remove_live_source(int(source["id"])) is True
+    assert db.get_live_sources(product_id) == []
+
+    result = service.refresh_product(product_id)
+    assert result["ok"] is False
+    assert result["status"] == "no_sources"
+    assert result["source_count"] == 0
+    assert result["errors"] == ["No live source URLs are attached to this product."]
+
+    product = db.get_product(product_id)
+    assert product is not None
+    assert product["live_status"] == "no_sources"
+    # The last successful quote and its history are kept.
+    assert product["current_price"] == 1_999.0
+    assert len(db.get_price_history(product_id)) == 1
+
+    stale = service.refresh_stale()
+    assert stale["total"] == 1
+    assert stale["failed"] == 1
+    assert stale["products"][0]["status"] == "no_sources"
+
+
+def test_recorded_live_quote_seed_is_idempotent_and_keeps_original_times(db: Database):
+    assert seed_recorded_live_quotes(db) == len(RECORDED_QUOTES)
+    assert seed_recorded_live_quotes(db) == 0
+
+    live = db.get_live_products()
+    assert len(live) == len(RECORDED_QUOTES)
+    for quote in RECORDED_QUOTES:
+        source = db.get_live_source_by_url(quote.url)
+        assert source is not None
+        product = db.get_product(int(source["product_id"]))
+        assert product is not None
+        assert product["data_origin"] == "live"
+        assert product["current_price"] == quote.price
+        assert product["last_checked_at"] == quote.recorded_at
+        assert product["last_success_at"] == quote.recorded_at
+        assert source["last_price"] == quote.price
+        assert source["last_success_at"] == quote.recorded_at
+        assert source["last_status"] == "ok"
+
+        history = db.get_price_history(int(product["id"]))
+        assert len(history) == 1
+        assert history[0]["observed_on"] == quote.recorded_at[:10]
+        assert history[0]["price"] == quote.price
+
+
+def test_recorded_live_quote_seed_skips_an_already_imported_url(
+    db: Database, settings: Settings, monkeypatch: pytest.MonkeyPatch
+):
+    service = LiveService(db, settings)
+    # The same Amazon product can be imported with referral parameters; the
+    # seed must recognise the ASIN and not create a second copy.
+    url = (
+        "https://www.amazon.in/boAt-Airdopes-Pocketable-Controls-Bluetooth/"
+        "dp/B0GZN2M7T7/ref=sr_1_7?keywords=earpods"
+    )
+    monkeypatch.setattr(service, "_scrape", lambda target: _quote(url))
+    imported = service.import_product(url)
+    assert imported["created"] is True
+
+    assert seed_recorded_live_quotes(db) == len(RECORDED_QUOTES) - 1
+    assert seed_recorded_live_quotes(db) == 0
+    assert len(db.get_live_products()) == len(RECORDED_QUOTES)
+
+
+def test_recorded_live_quote_can_be_refreshed(
+    db: Database, settings: Settings, monkeypatch: pytest.MonkeyPatch
+):
+    seed_recorded_live_quotes(db)
+    quote = RECORDED_QUOTES[0]
+    source = db.get_live_source_by_url(quote.url)
+    assert source is not None
+    service = LiveService(db, settings)
+    monkeypatch.setattr(
+        service,
+        "_scrape",
+        lambda target: _quote(
+            quote.url, title=quote.name, price=749.0, list_price=quote.list_price
+        ),
+    )
+
+    result = service.refresh_source(int(source["id"]))
+    assert result["ok"] is True
+    product = db.get_product(int(source["product_id"]))
+    assert product is not None
+    assert product["current_price"] == 749.0
+    assert product["live_status"] in {"ok", "partial"}
 
 
 def test_service_adds_a_second_source_and_uses_lowest_in_stock_quote(

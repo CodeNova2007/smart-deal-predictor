@@ -46,6 +46,7 @@ class Settings:
     live_stale_hours: int = 24
     live_check_robots: bool = True
     live_user_agent: str = ""
+    seed_live_demo: bool = True
 
     @property
     def ai_configured(self) -> bool:
@@ -139,6 +140,7 @@ def load_settings() -> Settings:
             os.getenv("LIVE_SCRAPER_CHECK_ROBOTS"), True
         ),
         live_user_agent=(os.getenv("LIVE_SCRAPER_USER_AGENT") or "").strip(),
+        seed_live_demo=_resolve_bool(os.getenv("SEED_LIVE_DEMO"), True),
     )
 
 

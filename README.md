@@ -52,7 +52,7 @@ missing.
 - **Premium responsive UI** — purple/blue accents, rounded cards, a mobile
   full-screen drawer, scrollable chat history, quick prompts, and a persistent
   composer.
-- **Offline test suite** — 85 tests with mocked network/AI calls, plus optional
+- **Offline test suite** — 92 tests with mocked network/AI calls, plus optional
   Playwright browser smoke tests for the panel and failure states.
 
 ---
@@ -189,6 +189,23 @@ history.
 - Automated access may be restricted by a retailer's terms of service. Use
   official APIs, affiliate feeds, or permission from the retailer for production
   or commercial use. This project is a demonstration, not a scraping service.
+
+### Recorded demo quotes
+
+Streamlit Community Cloud wipes local files whenever an app sleeps or
+redeploys, so a quote imported through the UI would not survive until a later
+presentation. On startup, the app re-attaches four verified readings captured
+from real Amazon.in and Flipkart product pages:
+
+- the price, seller, availability, and timestamp are exactly what the page
+  showed when it was read;
+- nothing is synthesised, and no coupon, MRP, or delivery fee is invented;
+- normal freshness rules apply, so an old reading is labelled **stale** rather
+  than presented as current;
+- the sources stay fully refreshable and removable in **Live quotes**.
+
+Set `SEED_LIVE_DEMO=false` to disable this startup seed. The recorded entries
+live in `smartdeal/live/seed.py`.
 
 ### Live quote statuses
 
@@ -482,6 +499,7 @@ PyProject/
 │   ├── live/
 │   │   ├── scraper.py              # URL checks, fetching, parsing, adapters
 │   │   ├── service.py              # Import, refresh, source management
+│   │   ├── seed.py                 # Verified recorded quotes for the demo
 │   │   ├── status.py               # Freshness and provenance labels
 │   │   └── __init__.py             # Public live-quote API
 │   ├── copilot/
@@ -535,7 +553,7 @@ $env:PYTHONIOENCODING = "utf-8"
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-Expected: **85 passed**, with the four Playwright tests skipped unless a browser
+Expected: **92 passed**, with the four Playwright tests skipped unless a browser
 URL is configured. The tests use temporary SQLite databases and mocked
 network/AI responses; no external network access is required.
 
