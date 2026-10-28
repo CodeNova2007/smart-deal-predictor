@@ -52,7 +52,7 @@ missing.
 - **Premium responsive UI** — purple/blue accents, rounded cards, a mobile
   full-screen drawer, scrollable chat history, quick prompts, and a persistent
   composer.
-- **Offline test suite** — 92 tests with mocked network/AI calls, plus optional
+- **Offline test suite** — 93 tests with mocked network/AI calls, plus optional
   Playwright browser smoke tests for the panel and failure states.
 
 ---
@@ -553,7 +553,7 @@ $env:PYTHONIOENCODING = "utf-8"
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-Expected: **92 passed**, with the four Playwright tests skipped unless a browser
+Expected: **93 passed**, with the four Playwright tests skipped unless a browser
 URL is configured. The tests use temporary SQLite databases and mocked
 network/AI responses; no external network access is required.
 

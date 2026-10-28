@@ -21,6 +21,7 @@ from ..database import Database
 
 _AMAZON_ASIN = re.compile(r"/(?:dp|gp/aw/d)/([A-Z0-9]{10})(?:[/?]|$)", re.I)
 _FLIPKART_ID = re.compile(r"/p/(itm[a-z0-9]+)", re.I)
+_SEED_MARKER = "recorded_live_quotes_v1"
 
 
 @dataclass(frozen=True)
@@ -130,10 +131,17 @@ def _product_key(url: str) -> tuple[str, str]:
 def seed_recorded_live_quotes(db: Database) -> int:
     """Attach the recorded quotes that are not already present.
 
-    The seed is idempotent. It skips a URL that is already attached and a
-    product whose name already exists, so a user's import or removal is not
-    overwritten. Returns the number of products added.
+    The seed runs once per database. It skips a URL that is already attached
+    and a product whose name already exists, so a user's import or removal is
+    not overwritten. Returns the number of products added.
     """
+
+    with db.connect() as connection:
+        already_seeded = connection.execute(
+            "SELECT 1 FROM app_meta WHERE key = ?", (_SEED_MARKER,)
+        ).fetchone()
+    if already_seeded is not None:
+        return 0
 
     existing_products = db.get_live_products()
     existing_names = {str(product.get("name") or "") for product in existing_products}
@@ -210,4 +218,11 @@ def seed_recorded_live_quotes(db: Database) -> int:
         existing_names.add(quote.name)
         existing_keys.add(_product_key(quote.url))
         added += 1
+
+    with db.connect() as connection:
+        connection.execute(
+            "INSERT OR REPLACE INTO app_meta (key, value) VALUES (?, '1')",
+            (_SEED_MARKER,),
+        )
+        connection.commit()
     return added

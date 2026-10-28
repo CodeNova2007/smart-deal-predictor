@@ -281,6 +281,15 @@ def test_recorded_live_quote_seed_is_idempotent_and_keeps_original_times(db: Dat
         assert history[0]["price"] == quote.price
 
 
+def test_recorded_live_quote_seed_runs_once_and_respects_removal(db: Database):
+    assert seed_recorded_live_quotes(db) == len(RECORDED_QUOTES)
+    product = db.get_live_products()[0]
+    assert db.delete_product(int(product["id"])) is True
+
+    assert seed_recorded_live_quotes(db) == 0
+    assert len(db.get_live_products()) == len(RECORDED_QUOTES) - 1
+
+
 def test_recorded_live_quote_seed_skips_an_already_imported_url(
     db: Database, settings: Settings, monkeypatch: pytest.MonkeyPatch
 ):
