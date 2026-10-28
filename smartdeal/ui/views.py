@@ -1589,6 +1589,22 @@ def render_live_quotes(db: Database, snapshots: list[dict[str, Any]], settings: 
             """,
             unsafe_allow_html=True,
         )
+        with st.expander("Which links work?"):
+            st.markdown(
+                "- **Amazon.in** — a product page with `/dp/` or `/gp/aw/d/` in "
+                "the address bar.\n"
+                "- **Flipkart** — a product page with `/p/itm…`; sell-back or "
+                "exchange listings are not normal product offers.\n"
+                "- **INR only** — the page must show ₹. Prices in other "
+                "currencies are rejected, never converted.\n"
+                "- **One item, not a list** — search, category, store, cart, and "
+                "wishlist pages are rejected.\n"
+                "- **No bot checks** — some retailers (for example Croma) return "
+                "an access-denied page; the app never bypasses it.\n"
+                "- **Public app limits** — Flipkart may rate-limit the cloud "
+                "server. Amazon.in links are the most reliable there; the local "
+                "app can read both."
+            )
 
     live_snapshots = [item for item in snapshots if item.get("is_live")]
     if not live_snapshots:
