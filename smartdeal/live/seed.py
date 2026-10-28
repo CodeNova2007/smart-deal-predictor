@@ -71,38 +71,6 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         availability="In stock",
         recorded_at="2026-10-28T01:06:19+00:00",
     ),
-    RecordedQuote(
-        url=(
-            "https://www.flipkart.com/boat-rockerz-450-bluetooth-headset/"
-            "p/itmfema4m9dvzgkz"
-        ),
-        retailer="Flipkart",
-        name="boAt Rockerz 450 Bluetooth Headset",
-        brand="boAt",
-        category="Audio",
-        emoji="🎧",
-        price=1899.0,
-        seller="Flipkart",
-        in_stock=True,
-        availability="Availability not confirmed",
-        recorded_at="2026-10-28T01:05:42+00:00",
-    ),
-    RecordedQuote(
-        url=(
-            "https://www.flipkart.com/sony-wh-ch520-50-hrs-playtime-dsee-upscale-"
-            "multipoint-connection-dual-pairing-bluetooth/p/itm29e4c2b8a0883"
-        ),
-        retailer="Flipkart",
-        name="Sony WH-CH520 Wireless Headphones",
-        brand="Sony",
-        category="Audio",
-        emoji="🎧",
-        price=2990.0,
-        seller="Flipkart",
-        in_stock=True,
-        availability="In stock",
-        recorded_at="2026-10-28T03:38:36+00:00",
-    ),
 )
 
 

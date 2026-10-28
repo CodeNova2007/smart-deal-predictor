@@ -194,8 +194,8 @@ history.
 
 Streamlit Community Cloud wipes local files whenever an app sleeps or
 redeploys, so a quote imported through the UI would not survive until a later
-presentation. On startup, the app re-attaches four verified readings captured
-from real Amazon.in and Flipkart product pages:
+presentation. On startup, the app re-attaches two verified readings captured
+from real Amazon.in product pages:
 
 - the price, seller, availability, and timestamp are exactly what the page
   showed when it was read;
