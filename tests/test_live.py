@@ -256,6 +256,19 @@ def test_service_refreshes_a_live_product_with_no_sources(
     assert stale["products"][0]["status"] == "no_sources"
 
 
+def test_recorded_live_quote_seed_covers_another_marketplace():
+    others = [
+        quote
+        for quote in RECORDED_QUOTES
+        if quote.retailer not in {"Amazon.in", "Flipkart"}
+    ]
+    assert len(others) >= 15
+    assert {quote.retailer for quote in others} == {"Reliance Digital"}
+    assert all(quote.price > 0 and quote.in_stock for quote in others)
+    assert len({quote.url for quote in others}) == len(others)
+    assert len({quote.name for quote in others}) == len(others)
+
+
 def test_recorded_live_quote_seed_is_idempotent_and_keeps_original_times(db: Database):
     assert seed_recorded_live_quotes(db) == len(RECORDED_QUOTES)
     assert seed_recorded_live_quotes(db) == 0

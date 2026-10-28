@@ -1595,6 +1595,8 @@ def render_live_quotes(db: Database, snapshots: list[dict[str, Any]], settings: 
                 "the address bar.\n"
                 "- **Flipkart** — a product page with `/p/itm…`; sell-back or "
                 "exchange listings are not normal product offers.\n"
+                "- **Reliance Digital** — a product page with `/product/` in "
+                "the address bar; its listed price and stock are readable.\n"
                 "- **INR only** — the page must show ₹. Prices in other "
                 "currencies are rejected, never converted.\n"
                 "- **One item, not a list** — search, category, store, cart, and "
@@ -1602,8 +1604,8 @@ def render_live_quotes(db: Database, snapshots: list[dict[str, Any]], settings: 
                 "- **No bot checks** — some retailers (for example Croma) return "
                 "an access-denied page; the app never bypasses it.\n"
                 "- **Public app limits** — Flipkart may rate-limit the cloud "
-                "server. Amazon.in links are the most reliable there; the local "
-                "app can read both."
+                "server. Amazon.in and Reliance Digital links are the most "
+                "reliable there; the local app can read all three."
             )
 
     live_snapshots = [item for item in snapshots if item.get("is_live")]

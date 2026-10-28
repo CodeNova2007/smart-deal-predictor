@@ -52,7 +52,7 @@ missing.
 - **Premium responsive UI** — purple/blue accents, rounded cards, a mobile
   full-screen drawer, scrollable chat history, quick prompts, and a persistent
   composer.
-- **Offline test suite** — 93 tests with mocked network/AI calls, plus optional
+- **Offline test suite** — 94 tests with mocked network/AI calls, plus optional
   Playwright browser smoke tests for the panel and failure states.
 
 ---
@@ -194,11 +194,13 @@ history.
 
 Streamlit Community Cloud wipes local files whenever an app sleeps or
 redeploys, so a quote imported through the UI would not survive until a later
-presentation. On startup, the app re-attaches two verified readings captured
-from real Amazon.in product pages:
+presentation. On startup, the app re-attaches twenty verified readings captured
+from real Amazon.in and Reliance Digital product pages:
 
 - the price, seller, availability, and timestamp are exactly what the page
   showed when it was read;
+- the seed currently covers two Amazon.in quotes and eighteen Reliance Digital
+  products across audio, phones, laptops, TVs, and refrigerators;
 - nothing is synthesised, and no coupon, MRP, or delivery fee is invented;
 - normal freshness rules apply, so an old reading is labelled **stale** rather
   than presented as current;
@@ -553,7 +555,7 @@ $env:PYTHONIOENCODING = "utf-8"
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-Expected: **93 passed**, with the four Playwright tests skipped unless a browser
+Expected: **94 passed**, with the four Playwright tests skipped unless a browser
 URL is configured. The tests use temporary SQLite databases and mocked
 network/AI responses; no external network access is required.
 
