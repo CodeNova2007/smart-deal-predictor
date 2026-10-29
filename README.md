@@ -52,7 +52,7 @@ missing.
 - **Premium responsive UI** — purple/blue accents, rounded cards, a mobile
   full-screen drawer, scrollable chat history, quick prompts, and a persistent
   composer.
-- **Offline test suite** — 94 tests with mocked network/AI calls, plus optional
+- **Offline test suite** — 97 tests with mocked network/AI calls, plus optional
   Playwright browser smoke tests for the panel and failure states.
 
 ---
@@ -194,13 +194,17 @@ history.
 
 Streamlit Community Cloud wipes local files whenever an app sleeps or
 redeploys, so a quote imported through the UI would not survive until a later
-presentation. On startup, the app re-attaches twenty verified readings captured
-from real Amazon.in and Reliance Digital product pages:
+presentation. On startup, the app re-attaches twenty-five verified readings
+captured from real Amazon.in, Reliance Digital, and Myntra product pages:
 
 - the price, seller, availability, and timestamp are exactly what the page
   showed when it was read;
-- the seed currently covers two Amazon.in quotes and eighteen Reliance Digital
-  products across audio, phones, laptops, TVs, and refrigerators;
+- the seed currently covers two Amazon.in quotes, thirteen Reliance Digital
+  products across audio, phones, TVs, and appliances, and ten women's dress
+  listings from Myntra;
+- when a seed version retires products, a one-time cleanup drops them on the
+  next startup (only while they still match the original recorded reading,
+  so refreshed or user-modified products are never deleted);
 - nothing is synthesised, and no coupon, MRP, or delivery fee is invented;
 - normal freshness rules apply, so an old reading is labelled **stale** rather
   than presented as current;
@@ -555,7 +559,7 @@ $env:PYTHONIOENCODING = "utf-8"
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-Expected: **94 passed**, with the four Playwright tests skipped unless a browser
+Expected: **97 passed**, with the four Playwright tests skipped unless a browser
 URL is configured. The tests use temporary SQLite databases and mocked
 network/AI responses; no external network access is required.
 

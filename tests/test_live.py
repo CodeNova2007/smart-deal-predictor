@@ -10,7 +10,11 @@ from smartdeal.analytics import build_product_snapshot
 from smartdeal.config import Settings
 from smartdeal.database import Database
 from smartdeal.live import LiveQuote, LiveService, ScrapeError
-from smartdeal.live.seed import RECORDED_QUOTES, seed_recorded_live_quotes
+from smartdeal.live.seed import (
+    RECORDED_QUOTES,
+    _RETIRED_QUOTES,
+    seed_recorded_live_quotes,
+)
 from smartdeal.live.scraper import (
     is_product_page_url,
     parse_product_page,
@@ -263,10 +267,19 @@ def test_recorded_live_quote_seed_covers_another_marketplace():
         if quote.retailer not in {"Amazon.in", "Flipkart"}
     ]
     assert len(others) >= 15
-    assert {quote.retailer for quote in others} == {"Reliance Digital"}
+    assert {quote.retailer for quote in others} == {"Reliance Digital", "Myntra"}
     assert all(quote.price > 0 and quote.in_stock for quote in others)
     assert len({quote.url for quote in others}) == len(others)
     assert len({quote.name for quote in others}) == len(others)
+
+
+def test_recorded_live_quote_seed_contains_fashion_dresses():
+    dresses = [quote for quote in RECORDED_QUOTES if quote.category == "Fashion"]
+    assert len(dresses) >= 10
+    assert all(quote.retailer == "Myntra" for quote in dresses)
+    assert all(quote.price > 0 and quote.in_stock for quote in dresses)
+    assert all(quote.emoji == "👗" for quote in dresses)
+    assert len({quote.url for quote in dresses}) == len(dresses)
 
 
 def test_recorded_live_quote_seed_is_idempotent_and_keeps_original_times(db: Database):
@@ -319,7 +332,95 @@ def test_recorded_live_quote_seed_skips_an_already_imported_url(
 
     assert seed_recorded_live_quotes(db) == len(RECORDED_QUOTES) - 1
     assert seed_recorded_live_quotes(db) == 0
-    assert len(db.get_live_products()) == len(RECORDED_QUOTES)
+
+
+def test_seed_cleanup_drops_retired_quote_during_marker_bump(db: Database):
+    url, recorded_at = _RETIRED_QUOTES[0]
+    product_id = db.create_product(
+        name="Retired Seed Product",
+        brand="Asus",
+        category="Laptops",
+        description="",
+        emoji="💻",
+        current_price=70990.0,
+        list_price=0,
+        currency="INR",
+        data_origin="live",
+        source_url=url,
+        last_checked_at=recorded_at,
+        last_success_at=recorded_at,
+        live_status="ok",
+        live_error="",
+    )
+    db.upsert_live_source(
+        product_id,
+        url=url,
+        retailer="Reliance Digital",
+        checked_at=recorded_at,
+        success_at=recorded_at,
+        status="ok",
+        error="",
+        title="Retired Seed Product",
+        price=70990.0,
+        list_price=None,
+        currency="INR",
+    )
+    # Simulate a database seeded by the previous seed version.
+    with db.connect() as connection:
+        connection.execute(
+            "INSERT OR REPLACE INTO app_meta (key, value) VALUES "
+            "('recorded_live_quotes_v2', '1')"
+        )
+        connection.commit()
+
+    assert seed_recorded_live_quotes(db) == len(RECORDED_QUOTES)
+    assert db.get_live_source_by_url(url) is None
+    assert db.get_product(product_id) is None
+
+
+def test_seed_cleanup_spares_a_refreshed_retired_product(db: Database):
+    url, recorded_at = _RETIRED_QUOTES[0]
+    product_id = db.create_product(
+        name="Retired Seed Product",
+        brand="Asus",
+        category="Laptops",
+        description="",
+        emoji="💻",
+        current_price=69990.0,
+        list_price=0,
+        currency="INR",
+        data_origin="live",
+        source_url=url,
+        last_checked_at="2026-10-28T12:00:00+00:00",
+        last_success_at="2026-10-28T12:00:00+00:00",
+        live_status="ok",
+        live_error="",
+    )
+    db.upsert_live_source(
+        product_id,
+        url=url,
+        retailer="Reliance Digital",
+        checked_at="2026-10-28T12:00:00+00:00",
+        success_at="2026-10-28T12:00:00+00:00",
+        status="ok",
+        error="",
+        title="Retired Seed Product",
+        price=69990.0,
+        list_price=None,
+        currency="INR",
+    )
+    with db.connect() as connection:
+        connection.execute(
+            "INSERT OR REPLACE INTO app_meta (key, value) VALUES "
+            "('recorded_live_quotes_v2', '1')"
+        )
+        connection.commit()
+
+    assert seed_recorded_live_quotes(db) == len(RECORDED_QUOTES)
+    # The product was refreshed, so the cleanup must not touch it.
+    assert db.get_product(product_id) is not None
+    assert db.get_live_source_by_url(url) is not None
+    assert len(db.get_live_products()) == len(RECORDED_QUOTES) + 1
 
 
 def test_recorded_live_quote_can_be_refreshed(

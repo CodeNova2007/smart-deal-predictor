@@ -77,6 +77,7 @@ BUDGET_BANDS = {
 LIVE_CATEGORIES = [
     "Auto-detect",
     "Audio",
+    "Fashion",
     "Wearables",
     "Laptops",
     "Desktops",
@@ -1595,6 +1596,8 @@ def render_live_quotes(db: Database, snapshots: list[dict[str, Any]], settings: 
                 "the address bar.\n"
                 "- **Flipkart** — a product page with `/p/itm…`; sell-back or "
                 "exchange listings are not normal product offers.\n"
+                "- **Myntra** — a dress or fashion product page ending in "
+                "`/buy`; its listed price and stock are readable.\n"
                 "- **Reliance Digital** — a product page with `/product/` in "
                 "the address bar; its listed price and stock are readable.\n"
                 "- **INR only** — the page must show ₹. Prices in other "

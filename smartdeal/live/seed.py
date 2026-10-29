@@ -21,7 +21,7 @@ from ..database import Database
 
 _AMAZON_ASIN = re.compile(r"/(?:dp|gp/aw/d)/([A-Z0-9]{10})(?:[/?]|$)", re.I)
 _FLIPKART_ID = re.compile(r"/p/(itm[a-z0-9]+)", re.I)
-_SEED_MARKER = "recorded_live_quotes_v2"
+_SEED_MARKER = "recorded_live_quotes_v3"
 
 
 @dataclass(frozen=True)
@@ -202,58 +202,6 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         recorded_at="2026-10-28T07:15:42+00:00",
     ),
     RecordedQuote(
-        url="https://www.reliancedigital.in/product/asus-tuf-a15-fa506ncg-hn200ws-gaming-laptop-amd-ryzen-7-7445hs16-gb512-gb-ssd4-gb-nvidia-geforce-rtxwindows-11microsoft-office-home-2024full-hd-3962-cm-156-inch-graphite-black-mel0pj-9345133",
-        retailer="Reliance Digital",
-        name="Asus TUF A15 Gaming Laptop",
-        brand="Asus",
-        category="Laptops",
-        emoji="💻",
-        price=70990.0,
-        seller="Reliance Digital",
-        in_stock=True,
-        availability="In stock",
-        recorded_at="2026-10-28T07:15:55+00:00",
-    ),
-    RecordedQuote(
-        url="https://www.reliancedigital.in/product/lenovo-ideapad-slim3-8hin-standard-laptop-intel-core-i5-12450h16-gb512-gb-ssdintel-uhd-graphicswindows-11-homemsofficefull-hd-396-cm-156-inch-arctic-grey-m6q2t6-8866348",
-        retailer="Reliance Digital",
-        name="Lenovo IdeaPad Slim 3 Laptop",
-        brand="Lenovo",
-        category="Laptops",
-        emoji="💻",
-        price=58990.0,
-        seller="Reliance Digital",
-        in_stock=True,
-        availability="In stock",
-        recorded_at="2026-10-28T07:16:00+00:00",
-    ),
-    RecordedQuote(
-        url="https://www.reliancedigital.in/product/asus-vivobook-15-x1504vap-bq1321ws-standard-laptop-intel-core-3-processor-100u8-gb512-gb-ssdintel-uhd-graphicswindows-11-homemicrosoft-office-home-2024wuxga-396-cm-156-inch-cool-silver-mnd3ts-9996309",
-        retailer="Reliance Digital",
-        name="Asus VivoBook 15 Laptop",
-        brand="Asus",
-        category="Laptops",
-        emoji="💻",
-        price=52990.0,
-        seller="Reliance Digital",
-        in_stock=True,
-        availability="In stock",
-        recorded_at="2026-10-28T07:16:02+00:00",
-    ),
-    RecordedQuote(
-        url="https://www.reliancedigital.in/product/xiaomi-fx-series-1397-cm-55-inch-4k-ultra-hd-led-smart-fire-tv-2025-edition-with-alexa-built-in-l55mb-fin-mc4h8d-9266565",
-        retailer="Reliance Digital",
-        name="Xiaomi FX Series 55-inch 4K TV",
-        brand="Xiaomi",
-        category="Home",
-        emoji="📺",
-        price=35999.0,
-        seller="Reliance Digital",
-        in_stock=True,
-        availability="In stock",
-        recorded_at="2026-10-28T07:16:08+00:00",
-    ),
-    RecordedQuote(
         url="https://www.reliancedigital.in/product/samsung-108-cm-43-inches-crystal-4k-ultra-hd-smart-led-tv-black-ua43ue81afulxl-mcxaxq-9285129",
         retailer="Reliance Digital",
         name="Samsung Crystal 43-inch 4K TV",
@@ -265,19 +213,6 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         in_stock=True,
         availability="In stock",
         recorded_at="2026-10-28T07:16:13+00:00",
-    ),
-    RecordedQuote(
-        url="https://www.reliancedigital.in/product/lg-650-l-3-star-convertible-side-by-side-refrigerator-with-multi-air-flow-and-smart-diagnosis-dazzle-steel-gl-b257jds3-m8pu8g-9027110",
-        retailer="Reliance Digital",
-        name="LG 650L Side-by-Side Refrigerator",
-        brand="LG",
-        category="Home",
-        emoji="🧊",
-        price=87090.0,
-        seller="Reliance Digital",
-        in_stock=True,
-        availability="In stock",
-        recorded_at="2026-10-28T07:16:38+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/bosch-243l-top-freezer-frost-free-double-door-refrigerator-ctn27s21ei-fine-steel-moibb6-10047582",
@@ -305,11 +240,194 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         availability="In stock",
         recorded_at="2026-10-28T07:16:48+00:00",
     ),
+    RecordedQuote(
+        url="https://www.myntra.com/dresses/traquila/traquila-a-line-midi-dress/44864334/buy",
+        retailer="Myntra",
+        name="TRAQUILA A-Line Midi Dress",
+        brand="TRAQUILA",
+        category="Fashion",
+        emoji="👗",
+        price=497.0,
+        seller="Myntra",
+        in_stock=True,
+        availability="In stock",
+        recorded_at="2026-10-29T02:30:30+00:00",
+    ),
+    RecordedQuote(
+        url="https://www.myntra.com/dresses/aayu/aayu-women-maxi-dress/33317922/buy",
+        retailer="Myntra",
+        name="Aayu Women Maxi Dress",
+        brand="Aayu",
+        category="Fashion",
+        emoji="👗",
+        price=728.0,
+        seller="Myntra",
+        in_stock=True,
+        availability="In stock",
+        recorded_at="2026-10-29T02:30:31+00:00",
+    ),
+    RecordedQuote(
+        url="https://www.myntra.com/dresses/kasibaa/kasibaa-a-line-midi-dress/46996980/buy",
+        retailer="Myntra",
+        name="KASIBAA A-Line Midi Dress",
+        brand="KASIBAA",
+        category="Fashion",
+        emoji="👗",
+        price=794.0,
+        seller="Myntra",
+        in_stock=True,
+        availability="In stock",
+        recorded_at="2026-10-29T02:30:34+00:00",
+    ),
+    RecordedQuote(
+        url="https://www.myntra.com/dresses/selvia/selvia-women-solid-black-v-neck-ruffles-detail-fit--flare-wrap-midi-dress/34181758/buy",
+        retailer="Myntra",
+        name="Selvia Black Fit & Flare Wrap Midi Dress",
+        brand="Selvia",
+        category="Fashion",
+        emoji="👗",
+        price=710.0,
+        seller="Myntra",
+        in_stock=True,
+        availability="In stock",
+        recorded_at="2026-10-29T02:30:36+00:00",
+    ),
+    RecordedQuote(
+        url="https://www.myntra.com/dresses/mitera/mitera-puff-sleeve-a-line-midi-dress/45028920/buy",
+        retailer="Myntra",
+        name="Mitera Puff Sleeve A-Line Midi Dress",
+        brand="Mitera",
+        category="Fashion",
+        emoji="👗",
+        price=699.0,
+        seller="Myntra",
+        in_stock=True,
+        availability="In stock",
+        recorded_at="2026-10-29T02:30:38+00:00",
+    ),
+    RecordedQuote(
+        url="https://www.myntra.com/dresses/ichaa/ichaa-women-floral-embroidered-puff-sleeve-maternity-fit--flare-midi-dress/34767691/buy",
+        retailer="Myntra",
+        name="Ichaa Floral Embroidered Maternity Midi Dress",
+        brand="Ichaa",
+        category="Fashion",
+        emoji="👗",
+        price=575.0,
+        seller="Myntra",
+        in_stock=True,
+        availability="In stock",
+        recorded_at="2026-10-29T02:30:42+00:00",
+    ),
+    RecordedQuote(
+        url="https://www.myntra.com/dresses/arangetram/arangetram-floral-print-maxi-dress/45160949/buy",
+        retailer="Myntra",
+        name="ARANGETRAM Floral Print Maxi Dress",
+        brand="ARANGETRAM",
+        category="Fashion",
+        emoji="👗",
+        price=674.0,
+        seller="Myntra",
+        in_stock=True,
+        availability="In stock",
+        recorded_at="2026-10-29T02:30:44+00:00",
+    ),
+    RecordedQuote(
+        url="https://www.myntra.com/ethnic-dresses/sangria/sangria-roman-silk-foil-printed-fit--flared-maxi-dress/37253782/buy",
+        retailer="Myntra",
+        name="Sangria Roman Silk Foil Printed Maxi Dress",
+        brand="Sangria",
+        category="Fashion",
+        emoji="👗",
+        price=912.0,
+        seller="Myntra",
+        in_stock=True,
+        availability="In stock",
+        recorded_at="2026-10-29T02:31:02+00:00",
+    ),
+    RecordedQuote(
+        url="https://www.myntra.com/dresses/stylecast/stylecast-red-shoulder-straps-mini-bodycon-dress/24541592/buy",
+        retailer="Myntra",
+        name="StyleCast Red Mini Bodycon Dress",
+        brand="StyleCast",
+        category="Fashion",
+        emoji="👗",
+        price=831.0,
+        seller="Myntra",
+        in_stock=True,
+        availability="In stock",
+        recorded_at="2026-10-29T02:31:22+00:00",
+    ),
+    RecordedQuote(
+        url="https://www.myntra.com/dresses/dressberry/dressberry-bodycon-maxi-dress/47055884/buy",
+        retailer="Myntra",
+        name="DressBerry Bodycon Maxi Dress",
+        brand="DressBerry",
+        category="Fashion",
+        emoji="👗",
+        price=499.0,
+        seller="Myntra",
+        in_stock=True,
+        availability="In stock",
+        recorded_at="2026-10-29T02:31:20+00:00",
+    ),
 )
 
 
 def _recorded_day(quote: RecordedQuote) -> date:
     return date.fromisoformat(quote.recorded_at[:10])
+
+
+# Seed entries that a later seed version removed. Each pair is the retired
+# source URL and the exact success timestamp the original seed wrote, so the
+# cleanup only drops a product that still looks the way the seed left it.
+_RETIRED_QUOTES: tuple[tuple[str, str], ...] = (
+    (
+        "https://www.reliancedigital.in/product/asus-tuf-a15-fa506ncg-hn200ws-gaming-laptop-amd-ryzen-7-7445hs16-gb512-gb-ssd4-gb-nvidia-geforce-rtxwindows-11microsoft-office-home-2024full-hd-3962-cm-156-inch-graphite-black-mel0pj-9345133",
+        "2026-10-28T07:15:55+00:00",
+    ),
+    (
+        "https://www.reliancedigital.in/product/lenovo-ideapad-slim3-8hin-standard-laptop-intel-core-i5-12450h16-gb512-gb-ssdintel-uhd-graphicswindows-11-homemsofficefull-hd-396-cm-156-inch-arctic-grey-m6q2t6-8866348",
+        "2026-10-28T07:16:00+00:00",
+    ),
+    (
+        "https://www.reliancedigital.in/product/asus-vivobook-15-x1504vap-bq1321ws-standard-laptop-intel-core-3-processor-100u8-gb512-gb-ssdintel-uhd-graphicswindows-11-homemicrosoft-office-home-2024wuxga-396-cm-156-inch-cool-silver-mnd3ts-9996309",
+        "2026-10-28T07:16:02+00:00",
+    ),
+    (
+        "https://www.reliancedigital.in/product/xiaomi-fx-series-1397-cm-55-inch-4k-ultra-hd-led-smart-fire-tv-2025-edition-with-alexa-built-in-l55mb-fin-mc4h8d-9266565",
+        "2026-10-28T07:16:08+00:00",
+    ),
+    (
+        "https://www.reliancedigital.in/product/lg-650-l-3-star-convertible-side-by-side-refrigerator-with-multi-air-flow-and-smart-diagnosis-dazzle-steel-gl-b257jds3-m8pu8g-9027110",
+        "2026-10-28T07:16:38+00:00",
+    ),
+)
+
+
+def _remove_retired_quotes(db: Database) -> int:
+    """Drop live products created by a retired seed version.
+
+    A product is removed only while it still matches the recorded reading
+    exactly (same success timestamp and a single untouched source), so a
+    refreshed, re-sourced, or user-modified product is never deleted.
+    """
+
+    removed = 0
+    for url, recorded_at in _RETIRED_QUOTES:
+        source = db.get_live_source_by_url(url)
+        if source is None:
+            continue
+        product_id = int(source["product_id"])
+        product = db.get_product(product_id)
+        if product is None or product.get("data_origin") != "live":
+            continue
+        if str(product.get("last_success_at") or "") != recorded_at:
+            continue
+        if len(db.get_live_sources(product_id)) != 1:
+            continue
+        if db.delete_product(product_id):
+            removed += 1
+    return removed
 
 
 def _product_key(url: str) -> tuple[str, str]:
@@ -344,6 +462,10 @@ def seed_recorded_live_quotes(db: Database) -> int:
         ).fetchone()
     if already_seeded is not None:
         return 0
+
+    # A marker bump means the seed contents changed: drop retired products
+    # first so present-day databases stay in step with the recorded list.
+    _remove_retired_quotes(db)
 
     existing_products = db.get_live_products()
     existing_names = {str(product.get("name") or "") for product in existing_products}
