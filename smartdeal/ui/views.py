@@ -1607,8 +1607,8 @@ def render_live_quotes(db: Database, snapshots: list[dict[str, Any]], settings: 
                 "- **No bot checks** — some retailers (for example Croma) return "
                 "an access-denied page; the app never bypasses it.\n"
                 "- **Public app limits** — Flipkart may rate-limit the cloud "
-                "server. Amazon.in and Reliance Digital links are the most "
-                "reliable there; the local app can read all three."
+                "server. Amazon.in, Myntra, and Reliance Digital links are "
+                "the most reliable there; the local app can read all four."
             )
 
     live_snapshots = [item for item in snapshots if item.get("is_live")]
