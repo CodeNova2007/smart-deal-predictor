@@ -52,7 +52,7 @@ missing.
 - **Premium responsive UI** — purple/blue accents, rounded cards, a mobile
   full-screen drawer, scrollable chat history, quick prompts, and a persistent
   composer.
-- **Offline test suite** — 97 tests with mocked network/AI calls, plus optional
+- **Offline test suite** — 99 tests with mocked network/AI calls, plus optional
   Playwright browser smoke tests for the panel and failure states.
 
 ---
@@ -205,6 +205,9 @@ captured from real Amazon.in, Reliance Digital, and Myntra product pages:
 - when a seed version retires products, a one-time cleanup drops them on the
   next startup (only while they still match the original recorded reading,
   so refreshed or user-modified products are never deleted);
+- a new recorded reading also refreshes the matching seeded product in place,
+  but only when the stored check is older than the new reading, so a newer
+  user refresh is never overwritten;
 - nothing is synthesised, and no coupon, MRP, or delivery fee is invented;
 - normal freshness rules apply, so an old reading is labelled **stale** rather
   than presented as current;
@@ -559,7 +562,7 @@ $env:PYTHONIOENCODING = "utf-8"
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-Expected: **97 passed**, with the four Playwright tests skipped unless a browser
+Expected: **99 passed**, with the four Playwright tests skipped unless a browser
 URL is configured. The tests use temporary SQLite databases and mocked
 network/AI responses; no external network access is required.
 

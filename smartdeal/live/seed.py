@@ -21,7 +21,7 @@ from ..database import Database
 
 _AMAZON_ASIN = re.compile(r"/(?:dp|gp/aw/d)/([A-Z0-9]{10})(?:[/?]|$)", re.I)
 _FLIPKART_ID = re.compile(r"/p/(itm[a-z0-9]+)", re.I)
-_SEED_MARKER = "recorded_live_quotes_v3"
+_SEED_MARKER = "recorded_live_quotes_v4"
 
 
 @dataclass(frozen=True)
@@ -55,7 +55,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Clicktech Retail Private Ltd",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T01:06:17+00:00",
+        recorded_at="2026-11-02T04:41:48+00:00",
     ),
     RecordedQuote(
         url="https://www.amazon.in/gp/aw/d/B0H4ZB5NQV",
@@ -69,7 +69,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Clicktech Retail Private Ltd",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T01:06:19+00:00",
+        recorded_at="2026-11-02T04:41:52+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/noise-three-wireless-headphone-jet-black-lpm6ze-7534896",
@@ -82,7 +82,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:15:12+00:00",
+        recorded_at="2026-11-02T04:41:58+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/hp-200-wireless-over-ear-active-noise-cancellation-headphone-with-mic-mi2xqo-9580001",
@@ -95,7 +95,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:15:15+00:00",
+        recorded_at="2026-11-02T04:42:02+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/noise-airwave-max-5-overhead-wireless-headphone-carbon-black-m6uox5-8881059",
@@ -108,7 +108,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:15:18+00:00",
+        recorded_at="2026-11-02T04:42:07+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/jbl-tune-770nc-over-ear-wireless-headphone-with-mic-blue-ljimat",
@@ -121,7 +121,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:15:21+00:00",
+        recorded_at="2026-11-02T04:42:11+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/boat-rockerz-425-bluetooth-wireless-on-ear-headphones-signature-sound-enx-tech-asap-charge-25-h-playtime-bluetooth-v52-dual-pairing-with-mic-active-black-m0dwey-8536583",
@@ -134,7 +134,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:15:30+00:00",
+        recorded_at="2026-11-02T04:42:15+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/vivo-y19e-5g-64-gb-4-gb-ram-titanium-silver-mobile-phone-m8sfo3-9045979",
@@ -147,7 +147,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:15:33+00:00",
+        recorded_at="2026-11-02T04:42:20+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/realme-narzo-70-turbo-5g-128-gb-6-gb-ram-turbo-green-mobile-phone-m6uoqt-8881056",
@@ -160,7 +160,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:15:34+00:00",
+        recorded_at="2026-11-02T04:42:25+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/poco-x7-5g-256-gb-8-gb-ram-yellow-mobile-phone-m5qo3h-8834062",
@@ -173,7 +173,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:15:37+00:00",
+        recorded_at="2026-11-02T04:42:29+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/samsung-galaxy-f17-5g-128-gb-8-gb-ram-lavender-mobile-phone-mg4xb8-9490110",
@@ -186,7 +186,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:15:38+00:00",
+        recorded_at="2026-11-02T04:42:31+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/oppo-k14-5g-128-gb-6-gb-ram-icy-blue-mobile-phone-mmyf4x-9989643",
@@ -199,7 +199,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:15:42+00:00",
+        recorded_at="2026-11-02T04:42:36+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/samsung-108-cm-43-inches-crystal-4k-ultra-hd-smart-led-tv-black-ua43ue81afulxl-mcxaxq-9285129",
@@ -212,7 +212,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:16:13+00:00",
+        recorded_at="2026-11-02T04:42:40+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/bosch-243l-top-freezer-frost-free-double-door-refrigerator-ctn27s21ei-fine-steel-moibb6-10047582",
@@ -225,7 +225,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:16:45+00:00",
+        recorded_at="2026-11-02T04:42:44+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/godrej-244-l-3-star-frost-free-refrigerator-with-nano-shield-technology-fossil-steel-valor-280cnrcif-mmtbgp-9987199",
@@ -238,7 +238,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-28T07:16:48+00:00",
+        recorded_at="2026-11-02T04:42:48+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/traquila/traquila-a-line-midi-dress/44864334/buy",
@@ -251,7 +251,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-29T02:30:30+00:00",
+        recorded_at="2026-11-02T04:42:52+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/aayu/aayu-women-maxi-dress/33317922/buy",
@@ -260,11 +260,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="Aayu",
         category="Fashion",
         emoji="👗",
-        price=728.0,
+        price=732.0,
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-29T02:30:31+00:00",
+        recorded_at="2026-11-02T04:42:57+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/kasibaa/kasibaa-a-line-midi-dress/46996980/buy",
@@ -273,11 +273,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="KASIBAA",
         category="Fashion",
         emoji="👗",
-        price=794.0,
+        price=782.0,
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-29T02:30:34+00:00",
+        recorded_at="2026-11-02T04:43:00+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/selvia/selvia-women-solid-black-v-neck-ruffles-detail-fit--flare-wrap-midi-dress/34181758/buy",
@@ -286,11 +286,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="Selvia",
         category="Fashion",
         emoji="👗",
-        price=710.0,
+        price=714.0,
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-29T02:30:36+00:00",
+        recorded_at="2026-11-02T04:43:03+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/mitera/mitera-puff-sleeve-a-line-midi-dress/45028920/buy",
@@ -303,7 +303,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-29T02:30:38+00:00",
+        recorded_at="2026-11-02T04:43:06+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/ichaa/ichaa-women-floral-embroidered-puff-sleeve-maternity-fit--flare-midi-dress/34767691/buy",
@@ -316,7 +316,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-29T02:30:42+00:00",
+        recorded_at="2026-11-02T04:43:09+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/arangetram/arangetram-floral-print-maxi-dress/45160949/buy",
@@ -329,7 +329,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-29T02:30:44+00:00",
+        recorded_at="2026-11-02T04:43:13+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/ethnic-dresses/sangria/sangria-roman-silk-foil-printed-fit--flared-maxi-dress/37253782/buy",
@@ -342,7 +342,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-29T02:31:02+00:00",
+        recorded_at="2026-11-02T04:43:18+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/stylecast/stylecast-red-shoulder-straps-mini-bodycon-dress/24541592/buy",
@@ -351,11 +351,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="StyleCast",
         category="Fashion",
         emoji="👗",
-        price=831.0,
+        price=805.0,
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-29T02:31:22+00:00",
+        recorded_at="2026-11-02T04:43:25+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/dressberry/dressberry-bodycon-maxi-dress/47055884/buy",
@@ -364,11 +364,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="DressBerry",
         category="Fashion",
         emoji="👗",
-        price=499.0,
+        price=446.0,
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-10-29T02:31:20+00:00",
+        recorded_at="2026-11-02T04:43:30+00:00",
     ),
 )
 
@@ -430,6 +430,81 @@ def _remove_retired_quotes(db: Database) -> int:
     return removed
 
 
+def _refresh_recorded_quotes(db: Database) -> int:
+    """Bring already-seeded products up to the newest recorded reading.
+
+    Products are matched by their stable marketplace id (for example an Amazon
+    ASIN), so a quote imported under a different URL form is still refreshed.
+    Only products whose last successful check is older than the recorded
+    reading are updated, so a newer refresh or a user edit is never
+    overwritten. The original reading's timestamp is preserved.
+    """
+
+    keyed: dict[tuple[str, str], tuple[int, str]] = {}
+    for product in db.get_live_products():
+        if product.get("data_origin") != "live":
+            continue
+        product_id = int(product["id"])
+        for source in db.get_live_sources(product_id):
+            url = str(source.get("url") or "")
+            keyed.setdefault(_product_key(url), (product_id, url))
+
+    updated = 0
+    for quote in RECORDED_QUOTES:
+        match = keyed.get(_product_key(quote.url))
+        if match is None:
+            continue
+        product_id, source_url = match
+        product = db.get_product(product_id)
+        if product is None or product.get("data_origin") != "live":
+            continue
+        if str(product.get("last_success_at") or "") >= quote.recorded_at:
+            continue
+
+        day = _recorded_day(quote)
+        db.update_live_product(
+            product_id,
+            current_price=quote.price,
+            list_price=quote.list_price or 0,
+            last_checked_at=quote.recorded_at,
+            last_success_at=quote.recorded_at,
+            live_status="ok",
+            live_error="",
+        )
+        db.upsert_live_source(
+            product_id,
+            url=source_url,
+            retailer=quote.retailer,
+            checked_at=quote.recorded_at,
+            success_at=quote.recorded_at,
+            status="ok",
+            error="",
+            title=quote.name,
+            price=quote.price,
+            list_price=quote.list_price,
+            currency="INR",
+        )
+        db.upsert_live_offer(
+            product_id,
+            source_url=source_url,
+            retailer=quote.retailer,
+            seller=quote.seller,
+            price=quote.price,
+            list_price=quote.list_price,
+            in_stock=quote.in_stock,
+            availability=quote.availability,
+            checked_on=day,
+        )
+        db.replace_live_observation(
+            product_id,
+            quote.price,
+            observed_on=day,
+            source=f"Live quote · {quote.retailer}",
+        )
+        updated += 1
+    return updated
+
+
 def _product_key(url: str) -> tuple[str, str]:
     """Return a stable marketplace product id for duplicate detection.
 
@@ -466,6 +541,8 @@ def seed_recorded_live_quotes(db: Database) -> int:
     # A marker bump means the seed contents changed: drop retired products
     # first so present-day databases stay in step with the recorded list.
     _remove_retired_quotes(db)
+    # Then bring older seeded quotes up to the newest recorded reading.
+    _refresh_recorded_quotes(db)
 
     existing_products = db.get_live_products()
     existing_names = {str(product.get("name") or "") for product in existing_products}

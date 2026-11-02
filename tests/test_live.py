@@ -13,6 +13,7 @@ from smartdeal.live import LiveQuote, LiveService, ScrapeError
 from smartdeal.live.seed import (
     RECORDED_QUOTES,
     _RETIRED_QUOTES,
+    _SEED_MARKER,
     seed_recorded_live_quotes,
 )
 from smartdeal.live.scraper import (
@@ -421,6 +422,70 @@ def test_seed_cleanup_spares_a_refreshed_retired_product(db: Database):
     assert db.get_product(product_id) is not None
     assert db.get_live_source_by_url(url) is not None
     assert len(db.get_live_products()) == len(RECORDED_QUOTES) + 1
+
+
+def test_seed_refreshes_older_recorded_quotes_in_place(db: Database):
+    assert seed_recorded_live_quotes(db) == len(RECORDED_QUOTES)
+    quote = RECORDED_QUOTES[0]
+    source = db.get_live_source_by_url(quote.url)
+    assert source is not None
+    product_id = int(source["product_id"])
+    old_time = "2026-10-01T00:00:00+00:00"
+    db.update_live_product(
+        product_id,
+        current_price=1.0,
+        last_checked_at=old_time,
+        last_success_at=old_time,
+        live_status="stale",
+    )
+    # Simulate a database seeded by the previous seed version.
+    with db.connect() as connection:
+        connection.execute("DELETE FROM app_meta WHERE key = ?", (_SEED_MARKER,))
+        connection.execute(
+            "INSERT OR REPLACE INTO app_meta (key, value) VALUES "
+            "('recorded_live_quotes_v3', '1')"
+        )
+        connection.commit()
+
+    assert seed_recorded_live_quotes(db) == 0
+    product = db.get_product(product_id)
+    assert product is not None
+    assert product["current_price"] == quote.price
+    assert product["last_checked_at"] == quote.recorded_at
+    assert product["last_success_at"] == quote.recorded_at
+    assert product["live_status"] == "ok"
+    refreshed = db.get_live_source_by_url(quote.url)
+    assert refreshed is not None
+    assert refreshed["last_price"] == quote.price
+    assert refreshed["last_success_at"] == quote.recorded_at
+
+
+def test_seed_refresh_does_not_overwrite_a_newer_user_check(db: Database):
+    assert seed_recorded_live_quotes(db) == len(RECORDED_QUOTES)
+    quote = RECORDED_QUOTES[0]
+    source = db.get_live_source_by_url(quote.url)
+    assert source is not None
+    product_id = int(source["product_id"])
+    newer = "2026-12-01T00:00:00+00:00"
+    db.update_live_product(
+        product_id,
+        current_price=555.0,
+        last_checked_at=newer,
+        last_success_at=newer,
+    )
+    with db.connect() as connection:
+        connection.execute("DELETE FROM app_meta WHERE key = ?", (_SEED_MARKER,))
+        connection.execute(
+            "INSERT OR REPLACE INTO app_meta (key, value) VALUES "
+            "('recorded_live_quotes_v3', '1')"
+        )
+        connection.commit()
+
+    assert seed_recorded_live_quotes(db) == 0
+    product = db.get_product(product_id)
+    assert product is not None
+    assert product["current_price"] == 555.0
+    assert product["last_success_at"] == newer
 
 
 def test_recorded_live_quote_can_be_refreshed(
