@@ -21,7 +21,7 @@ from ..database import Database
 
 _AMAZON_ASIN = re.compile(r"/(?:dp|gp/aw/d)/([A-Z0-9]{10})(?:[/?]|$)", re.I)
 _FLIPKART_ID = re.compile(r"/p/(itm[a-z0-9]+)", re.I)
-_SEED_MARKER = "recorded_live_quotes_v4"
+_SEED_MARKER = "recorded_live_quotes_v5"
 
 
 @dataclass(frozen=True)
@@ -82,7 +82,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:41:58+00:00",
+        recorded_at="2026-11-05T02:57:28+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/hp-200-wireless-over-ear-active-noise-cancellation-headphone-with-mic-mi2xqo-9580001",
@@ -95,7 +95,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:02+00:00",
+        recorded_at="2026-11-05T02:57:31+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/noise-airwave-max-5-overhead-wireless-headphone-carbon-black-m6uox5-8881059",
@@ -121,7 +121,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:11+00:00",
+        recorded_at="2026-11-05T02:57:33+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/boat-rockerz-425-bluetooth-wireless-on-ear-headphones-signature-sound-enx-tech-asap-charge-25-h-playtime-bluetooth-v52-dual-pairing-with-mic-active-black-m0dwey-8536583",
@@ -130,11 +130,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="boAt",
         category="Audio",
         emoji="🎧",
-        price=1399.0,
+        price=1299.0,
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:15+00:00",
+        recorded_at="2026-11-05T02:57:36+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/vivo-y19e-5g-64-gb-4-gb-ram-titanium-silver-mobile-phone-m8sfo3-9045979",
@@ -147,7 +147,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:20+00:00",
+        recorded_at="2026-11-05T02:57:41+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/realme-narzo-70-turbo-5g-128-gb-6-gb-ram-turbo-green-mobile-phone-m6uoqt-8881056",
@@ -160,7 +160,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:25+00:00",
+        recorded_at="2026-11-05T02:57:42+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/poco-x7-5g-256-gb-8-gb-ram-yellow-mobile-phone-m5qo3h-8834062",
@@ -186,7 +186,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:31+00:00",
+        recorded_at="2026-11-05T02:57:46+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/oppo-k14-5g-128-gb-6-gb-ram-icy-blue-mobile-phone-mmyf4x-9989643",
@@ -199,7 +199,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:36+00:00",
+        recorded_at="2026-11-05T02:57:50+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/samsung-108-cm-43-inches-crystal-4k-ultra-hd-smart-led-tv-black-ua43ue81afulxl-mcxaxq-9285129",
@@ -212,7 +212,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:40+00:00",
+        recorded_at="2026-11-05T02:57:53+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/bosch-243l-top-freezer-frost-free-double-door-refrigerator-ctn27s21ei-fine-steel-moibb6-10047582",
@@ -238,7 +238,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:48+00:00",
+        recorded_at="2026-11-05T02:57:58+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/traquila/traquila-a-line-midi-dress/44864334/buy",
@@ -247,11 +247,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="TRAQUILA",
         category="Fashion",
         emoji="👗",
-        price=497.0,
+        price=499.0,
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:52+00:00",
+        recorded_at="2026-11-05T02:57:59+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/aayu/aayu-women-maxi-dress/33317922/buy",
@@ -264,7 +264,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:57+00:00",
+        recorded_at="2026-11-05T02:58:01+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/kasibaa/kasibaa-a-line-midi-dress/46996980/buy",
@@ -277,7 +277,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:43:00+00:00",
+        recorded_at="2026-11-05T02:58:03+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/selvia/selvia-women-solid-black-v-neck-ruffles-detail-fit--flare-wrap-midi-dress/34181758/buy",
@@ -290,7 +290,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:43:03+00:00",
+        recorded_at="2026-11-05T02:58:05+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/mitera/mitera-puff-sleeve-a-line-midi-dress/45028920/buy",
@@ -299,11 +299,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="Mitera",
         category="Fashion",
         emoji="👗",
-        price=699.0,
+        price=703.0,
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:43:06+00:00",
+        recorded_at="2026-11-05T02:58:07+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/ichaa/ichaa-women-floral-embroidered-puff-sleeve-maternity-fit--flare-midi-dress/34767691/buy",
@@ -312,11 +312,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="Ichaa",
         category="Fashion",
         emoji="👗",
-        price=575.0,
+        price=579.0,
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:43:09+00:00",
+        recorded_at="2026-11-05T02:58:09+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/arangetram/arangetram-floral-print-maxi-dress/45160949/buy",
@@ -325,11 +325,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="ARANGETRAM",
         category="Fashion",
         emoji="👗",
-        price=674.0,
+        price=681.0,
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:43:13+00:00",
+        recorded_at="2026-11-05T02:58:11+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/ethnic-dresses/sangria/sangria-roman-silk-foil-printed-fit--flared-maxi-dress/37253782/buy",
@@ -338,11 +338,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="Sangria",
         category="Fashion",
         emoji="👗",
-        price=912.0,
+        price=916.0,
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:43:18+00:00",
+        recorded_at="2026-11-05T02:58:13+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/stylecast/stylecast-red-shoulder-straps-mini-bodycon-dress/24541592/buy",
@@ -351,11 +351,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="StyleCast",
         category="Fashion",
         emoji="👗",
-        price=805.0,
+        price=831.0,
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:43:25+00:00",
+        recorded_at="2026-11-05T02:58:15+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/dressberry/dressberry-bodycon-maxi-dress/47055884/buy",
@@ -364,11 +364,11 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         brand="DressBerry",
         category="Fashion",
         emoji="👗",
-        price=446.0,
+        price=448.0,
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:43:30+00:00",
+        recorded_at="2026-11-05T02:58:17+00:00",
     ),
 )
 
