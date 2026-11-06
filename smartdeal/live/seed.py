@@ -21,7 +21,7 @@ from ..database import Database
 
 _AMAZON_ASIN = re.compile(r"/(?:dp|gp/aw/d)/([A-Z0-9]{10})(?:[/?]|$)", re.I)
 _FLIPKART_ID = re.compile(r"/p/(itm[a-z0-9]+)", re.I)
-_SEED_MARKER = "recorded_live_quotes_v5"
+_SEED_MARKER = "recorded_live_quotes_v6"
 
 
 @dataclass(frozen=True)
@@ -55,7 +55,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Clicktech Retail Private Ltd",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:41:48+00:00",
+        recorded_at="2026-11-06T04:18:45+00:00",
     ),
     RecordedQuote(
         url="https://www.amazon.in/gp/aw/d/B0H4ZB5NQV",
@@ -69,7 +69,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Clicktech Retail Private Ltd",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:41:52+00:00",
+        recorded_at="2026-11-06T04:18:49+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/noise-three-wireless-headphone-jet-black-lpm6ze-7534896",
@@ -82,7 +82,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:57:28+00:00",
+        recorded_at="2026-11-06T04:18:54+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/hp-200-wireless-over-ear-active-noise-cancellation-headphone-with-mic-mi2xqo-9580001",
@@ -95,7 +95,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:57:31+00:00",
+        recorded_at="2026-11-06T04:18:58+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/noise-airwave-max-5-overhead-wireless-headphone-carbon-black-m6uox5-8881059",
@@ -108,7 +108,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:07+00:00",
+        recorded_at="2026-11-06T04:19:01+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/jbl-tune-770nc-over-ear-wireless-headphone-with-mic-blue-ljimat",
@@ -121,7 +121,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:57:33+00:00",
+        recorded_at="2026-11-06T04:19:04+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/boat-rockerz-425-bluetooth-wireless-on-ear-headphones-signature-sound-enx-tech-asap-charge-25-h-playtime-bluetooth-v52-dual-pairing-with-mic-active-black-m0dwey-8536583",
@@ -134,7 +134,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:57:36+00:00",
+        recorded_at="2026-11-06T04:19:08+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/vivo-y19e-5g-64-gb-4-gb-ram-titanium-silver-mobile-phone-m8sfo3-9045979",
@@ -147,7 +147,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:57:41+00:00",
+        recorded_at="2026-11-06T04:19:11+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/realme-narzo-70-turbo-5g-128-gb-6-gb-ram-turbo-green-mobile-phone-m6uoqt-8881056",
@@ -160,7 +160,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:57:42+00:00",
+        recorded_at="2026-11-06T04:19:14+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/poco-x7-5g-256-gb-8-gb-ram-yellow-mobile-phone-m5qo3h-8834062",
@@ -173,7 +173,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:29+00:00",
+        recorded_at="2026-11-06T04:19:16+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/samsung-galaxy-f17-5g-128-gb-8-gb-ram-lavender-mobile-phone-mg4xb8-9490110",
@@ -186,7 +186,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:57:46+00:00",
+        recorded_at="2026-11-06T04:19:20+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/oppo-k14-5g-128-gb-6-gb-ram-icy-blue-mobile-phone-mmyf4x-9989643",
@@ -199,7 +199,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:57:50+00:00",
+        recorded_at="2026-11-06T04:19:23+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/samsung-108-cm-43-inches-crystal-4k-ultra-hd-smart-led-tv-black-ua43ue81afulxl-mcxaxq-9285129",
@@ -212,7 +212,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:57:53+00:00",
+        recorded_at="2026-11-06T04:19:25+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/bosch-243l-top-freezer-frost-free-double-door-refrigerator-ctn27s21ei-fine-steel-moibb6-10047582",
@@ -225,7 +225,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-02T04:42:44+00:00",
+        recorded_at="2026-11-06T04:19:28+00:00",
     ),
     RecordedQuote(
         url="https://www.reliancedigital.in/product/godrej-244-l-3-star-frost-free-refrigerator-with-nano-shield-technology-fossil-steel-valor-280cnrcif-mmtbgp-9987199",
@@ -238,7 +238,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Reliance Digital",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:57:58+00:00",
+        recorded_at="2026-11-06T04:19:30+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/traquila/traquila-a-line-midi-dress/44864334/buy",
@@ -251,7 +251,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:57:59+00:00",
+        recorded_at="2026-11-06T04:19:32+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/aayu/aayu-women-maxi-dress/33317922/buy",
@@ -264,7 +264,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:58:01+00:00",
+        recorded_at="2026-11-06T04:19:34+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/kasibaa/kasibaa-a-line-midi-dress/46996980/buy",
@@ -277,7 +277,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:58:03+00:00",
+        recorded_at="2026-11-06T04:19:36+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/selvia/selvia-women-solid-black-v-neck-ruffles-detail-fit--flare-wrap-midi-dress/34181758/buy",
@@ -290,7 +290,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:58:05+00:00",
+        recorded_at="2026-11-06T04:19:38+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/mitera/mitera-puff-sleeve-a-line-midi-dress/45028920/buy",
@@ -303,7 +303,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:58:07+00:00",
+        recorded_at="2026-11-06T04:19:40+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/ichaa/ichaa-women-floral-embroidered-puff-sleeve-maternity-fit--flare-midi-dress/34767691/buy",
@@ -316,7 +316,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:58:09+00:00",
+        recorded_at="2026-11-06T04:19:42+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/arangetram/arangetram-floral-print-maxi-dress/45160949/buy",
@@ -329,7 +329,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:58:11+00:00",
+        recorded_at="2026-11-06T04:19:44+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/ethnic-dresses/sangria/sangria-roman-silk-foil-printed-fit--flared-maxi-dress/37253782/buy",
@@ -342,7 +342,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:58:13+00:00",
+        recorded_at="2026-11-06T04:19:46+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/stylecast/stylecast-red-shoulder-straps-mini-bodycon-dress/24541592/buy",
@@ -355,7 +355,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:58:15+00:00",
+        recorded_at="2026-11-06T04:19:48+00:00",
     ),
     RecordedQuote(
         url="https://www.myntra.com/dresses/dressberry/dressberry-bodycon-maxi-dress/47055884/buy",
@@ -368,7 +368,7 @@ RECORDED_QUOTES: tuple[RecordedQuote, ...] = (
         seller="Myntra",
         in_stock=True,
         availability="In stock",
-        recorded_at="2026-11-05T02:58:17+00:00",
+        recorded_at="2026-11-06T04:19:50+00:00",
     ),
 )
 
